@@ -7,5 +7,5 @@
 </script>
 
 <button on:click={increment}>
-  // onclick을 on:click으로 수정 count is {count}
+  count is {count}
 </button>
