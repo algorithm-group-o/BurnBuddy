@@ -1,10 +1,11 @@
 <script>
-  let count = $state(0)
+  let count = 0;
+
   const increment = () => {
-    count += 1
-  }
+    count += 1;
+  };
 </script>
 
-<button onclick={increment}>
-  count is {count}
+<button on:click={increment}>
+  // onclick을 on:click으로 수정 count is {count}
 </button>
