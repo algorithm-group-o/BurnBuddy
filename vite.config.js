@@ -6,14 +6,12 @@ export default defineConfig({
   base: '/BurnBunny/',
   build: {
     outDir: 'dist',
-    assetsDir: '',
-    sourcemap: true,
-    reportCompressedSize: true,
+    assetsDir: 'assets',
     rollupOptions: {
       output: {
-        assetFileNames: '[name]-[hash][extname]',
-        chunkFileNames: '[name]-[hash].js',
-        entryFileNames: '[name]-[hash].js',
+        entryFileNames: 'assets/[name].[hash].js',
+        chunkFileNames: 'assets/[name].[hash].js',
+        assetFileNames: 'assets/[name].[hash].[ext]'
       }
     }
   }
