@@ -112,7 +112,9 @@
       <p class="font-bold text-xl mb-3">Calculating...</p>
       <div class="flex flex-col items-center justify-center space-y-4">
         <p class="text-gray-400 text-left w-full mb-6">{loadingStatus}</p>
-        <div bind:this={animationContainer} class="w-64 h-64 scale-150"></div>
+        <div class="overflow-hidden">
+          <div bind:this={animationContainer} class="w-64 h-64 scale-150"></div>
+        </div>
       </div>
     {:else if schedule.length > 0}
       <p class="font-bold text-xl mb-4">Your Workout Schedule</p>
@@ -132,7 +134,7 @@
         </div>
       </div>
 
-      <div class="space-y-3">
+      <div class="space-y-3 pb-3">
         {#each schedule as exercise, i}
           <div class="bg-gray-900 p-3 rounded-lg">
             <p class="font-semibold">Session {i + 1}: {exercise.name}</p>
@@ -145,4 +147,17 @@
       </div>
     {/if}
   </div>
+
+  {#if !loading && schedule.length > 0}
+    <div class="w-full pb-4 sticky bottom-0 bg-black">
+      <button
+        class="w-full text-white p-3 rounded-lg font-semibold text-lg bg-[#00C200] hover:bg-[#00B000]"
+        on:click={() => {
+          location.reload();
+        }}
+      >
+        Start Over
+      </button>
+    </div>
+  {/if}
 </section>

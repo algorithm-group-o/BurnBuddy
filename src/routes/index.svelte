@@ -6,14 +6,18 @@
   import WorkoutTargetCalories from "../components/WorkoutTargetCalories.svelte";
   import WorkoutCalculate from "../components/WorkoutCalculate.svelte";
   import { exercises } from "../lib/exercises";
+  import SplashPage from "../components/SplashPage.svelte";
 
   let selectedWorkout;
-  let step = 1;
+  let step = 0;
   let targetCalories;
   let availableTime;
 </script>
 
 <Background>
+  {#if step == 0}
+    <SplashPage bind:step />
+  {/if}
   <Stepper {step} />
   {#if step == 1}
     <WorkoutSelect bind:step bind:selectedWorkout />
