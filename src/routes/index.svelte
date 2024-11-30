@@ -8,15 +8,17 @@
 
   let selectedWorkout;
   let step = 1;
+  let targetCalories;
+  let availableTime;
 </script>
 
 <Background>
   <Stepper {step} />
   {#if step == 1}
-    <WorkoutSelect bind:selectedWorkout bind:step />
+    <WorkoutSelect bind:step bind:selectedWorkout />
   {:else if step == 2}
-    <WorkoutTargetCalories bind:step />
+    <WorkoutTargetCalories bind:step bind:targetCalories {selectedWorkout} />
   {:else if step == 3}
-    <WorkoutAbleTime bind:step />
+    <WorkoutAbleTime bind:step bind:availableTime />
   {/if}
 </Background>

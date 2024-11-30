@@ -1,11 +1,22 @@
 <script>
   export let step;
-  let targetCalories = "";
+  export let targetCalories = "";
+  export let selectedWorkout;
+
+  import { exercises } from "../lib/exercises";
+
   let isValid = false;
 
   function validateInput(value) {
     const calories = parseInt(value);
-    isValid = !isNaN(calories) && calories > 0 && calories <= 2000;
+    const workout = exercises.find((ex) => ex.name === selectedWorkout);
+
+    if (workout) {
+      isValid =
+        !isNaN(calories) && calories >= workout.calories && calories <= 2000;
+    } else {
+      isValid = false;
+    }
   }
 
   function handleInput(event) {
@@ -35,7 +46,17 @@
               <p class="text-green-500">Valid calorie target</p>
             {:else}
               <p class="text-red-500">
-                Please enter a number between 1 and 2000
+                {#if selectedWorkout}
+                  {#if exercises.find((ex) => ex.name === selectedWorkout)}
+                    Please enter a number between {exercises.find(
+                      (ex) => ex.name === selectedWorkout
+                    ).calories} and 2000
+                  {:else}
+                    Please select a workout first
+                  {/if}
+                {:else}
+                  Please select a workout first
+                {/if}
               </p>
             {/if}
           </div>

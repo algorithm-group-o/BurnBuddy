@@ -1,6 +1,6 @@
 <script>
   export let step;
-  let availableTime = "";
+  export let availableTime = "";
   let isValid = false;
 
   function validateInput(value) {
