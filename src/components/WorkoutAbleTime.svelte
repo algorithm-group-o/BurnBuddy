@@ -46,12 +46,18 @@
 
   <div class="w-full pb-4 sticky bottom-0 bg-black">
     <button
+      class="w-full mb-4 flex items-center justify-center gap-2 text-sm"
+      on:click={() => {
+        step = 2;
+      }}><i class="fa-light fa-chevron-left text-xs"></i>Previous Page</button
+    >
+    <button
       class="w-full text-white p-3 rounded-lg font-semibold text-lg {isValid
         ? 'bg-[#00C200] hover:bg-[#00B000]'
         : 'bg-gray-600 cursor-not-allowed'}"
       disabled={!isValid}
     >
-      Continue
+      Complete
     </button>
   </div>
 </section>

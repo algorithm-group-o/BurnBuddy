@@ -7,7 +7,7 @@
   <div class="flex-1 h-0.5 bg-gray-200 rounded-lg">
     <div
       class="h-0.5 bg-[#00B000] duration-200"
-      style="width: {step >= 1 ? '100%' : '0%'}"
+      style="width: {step > 1 ? '100%' : '0%'}"
     ></div>
   </div>
 
@@ -15,7 +15,7 @@
   <div class="flex-1 h-0.5 bg-gray-200 rounded-lg">
     <div
       class="h-0.5 bg-[#00B000] duration-200"
-      style="width: {step >= 2 ? '100%' : '0%'}"
+      style="width: {step > 2 ? '100%' : '0%'}"
     ></div>
   </div>
 
@@ -23,7 +23,7 @@
   <div class="flex-1 h-0.5 bg-gray-200 rounded-lg">
     <div
       class="h-0.5 bg-[#00B000] duration-200"
-      style="width: {step >= 3 ? '100%' : '0%'}"
+      style="width: {step > 3 ? '100%' : '0%'}"
     ></div>
   </div>
 </div>

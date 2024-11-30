@@ -3,6 +3,7 @@
   import { onMount } from "svelte";
 
   export let selectedWorkout;
+  export let step;
   let scrollContainer;
   let showScrollIndicator = false;
   let hasScrolledToBottom = false;
@@ -86,6 +87,9 @@
         ? 'bg-[#00C200] hover:bg-[#00B000]'
         : 'bg-gray-600 cursor-not-allowed'}"
       disabled={!selectedWorkout}
+      on:click={() => {
+        step = 2;
+      }}
     >
       Selection Complete
     </button>
