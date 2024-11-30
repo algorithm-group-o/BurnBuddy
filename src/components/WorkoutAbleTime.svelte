@@ -56,6 +56,9 @@
         ? 'bg-[#00C200] hover:bg-[#00B000]'
         : 'bg-gray-600 cursor-not-allowed'}"
       disabled={!isValid}
+      on:click={() => {
+        step = 4;
+      }}
     >
       Complete
     </button>

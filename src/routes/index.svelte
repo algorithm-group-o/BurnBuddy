@@ -4,6 +4,7 @@
   import WorkoutAbleTime from "../components/WorkoutAbleTime.svelte";
   import WorkoutSelect from "../components/WorkoutSelect.svelte";
   import WorkoutTargetCalories from "../components/WorkoutTargetCalories.svelte";
+  import WorkoutCalculate from "../components/WorkoutCalculate.svelte";
   import { exercises } from "../lib/exercises";
 
   let selectedWorkout;
@@ -20,5 +21,7 @@
     <WorkoutTargetCalories bind:step bind:targetCalories {selectedWorkout} />
   {:else if step == 3}
     <WorkoutAbleTime bind:step bind:availableTime />
+  {:else if step == 4}
+    <WorkoutCalculate {selectedWorkout} {targetCalories} {availableTime} />
   {/if}
 </Background>
