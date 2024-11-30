@@ -23,7 +23,7 @@
       renderer: "svg",
       loop: true,
       autoplay: true,
-      path: "/BurnBuddy/src/assets/loading.json",
+      path: import.meta.env.BASE_URL + "assets/loading.json",
     });
 
     return () => {
