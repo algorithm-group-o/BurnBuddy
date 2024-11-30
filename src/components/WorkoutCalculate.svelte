@@ -77,6 +77,22 @@
     <p class="font-bold text-xl mb-4">Your Workout Schedule</p>
 
     {#if schedule.length > 0}
+      <div class="mb-6 p-3 bg-gray-800 rounded-lg border border-gray-700">
+        <p class="font-bold text-lg mb-2">Workout Summary</p>
+        <div class="space-y-2">
+          <div class="bg-gray-900 p-3 rounded-lg">
+            <p class="text-gray-400 text-sm">Total Calories Burned</p>
+            <p class="font-semibold text-lg">
+              {totalBurnedCalories}
+            </p>
+          </div>
+          <div class="bg-gray-900 p-3 rounded-lg">
+            <p class="text-gray-400 text-sm">Remaining Calories</p>
+            <p class="font-semibold text-lg">{remainingCalories}</p>
+          </div>
+        </div>
+      </div>
+
       <div class="space-y-3">
         {#each schedule as exercise, i}
           <div class="bg-gray-900 p-3 rounded-lg">
@@ -87,16 +103,6 @@
             </div>
           </div>
         {/each}
-
-        <div class="mt-4 p-4 bg-gray-900 rounded-lg">
-          <p class="font-semibold">Summary</p>
-          <p class="text-sm text-gray-400">
-            Total Calories Burned: {totalBurnedCalories.toFixed(2)}
-          </p>
-          <p class="text-sm text-gray-400">
-            Remaining Calories: {remainingCalories.toFixed(2)}
-          </p>
-        </div>
       </div>
     {:else}
       <p class="text-gray-400">Calculating your workout schedule...</p>
