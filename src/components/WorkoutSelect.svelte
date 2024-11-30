@@ -5,6 +5,7 @@
   let selectedWorkout;
   let scrollContainer;
   let showScrollIndicator = false;
+  let hasScrolledToBottom = false;
 
   onMount(() => {
     checkScroll();
@@ -15,19 +16,25 @@
   function checkScroll() {
     if (!scrollContainer) return;
     const { scrollHeight, clientHeight, scrollTop } = scrollContainer;
+
+    if (scrollHeight - clientHeight - scrollTop <= 20) {
+      hasScrolledToBottom = true;
+    }
+
     showScrollIndicator =
+      !hasScrolledToBottom &&
       scrollHeight > clientHeight &&
       scrollTop < scrollHeight - clientHeight - 20;
   }
 </script>
 
 <!-- Start of Selection -->
-<section class="px-4 flex-1 flex flex-col justify-between h-[calc(100vh-52px)]">
+<section class="px-4 flex-1 flex flex-col justify-between h-[calc(100vh-86px)]">
   <div>
     <p class="font-bold text-xl">Choose your favorite workout</p>
     <div class="relative">
       <div
-        class="space-y-2 mt-4 h-full overflow-y-auto max-h-[calc(100vh-52px-8rem)]"
+        class="space-y-2 mt-4 h-full overflow-y-auto max-h-[calc(100vh-86px-8rem)]"
         bind:this={scrollContainer}
       >
         {#each exercises as item}
@@ -63,8 +70,12 @@
       </div>
 
       {#if showScrollIndicator}
-        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 animate-bounce">
-          <i class="fa-regular fa-chevron-down"></i>
+        <div
+          class="absolute bottom-2 left-1/2 -translate-x-1/2 flex justify-center w-full"
+        >
+          <i
+            class="fa-solid text-xl text-gray-300 fa-chevron-down animate-bounce"
+          ></i>
         </div>
       {/if}
     </div>
