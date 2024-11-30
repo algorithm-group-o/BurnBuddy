@@ -42,18 +42,20 @@
   async function calculateSchedule() {
     schedule = [];
     loading = true;
-    loadingStatus = "Calculating number of sessions...";
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    loadingStatus = "Initializing...";
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
+    // Calculate maximum possible sessions based on available time
     const maxSessions = Math.floor(availableTime / 30);
-    let remainingTime = availableTime;
-    remainingCalories = targetCalories;
-    let lastIntensity = null;
+    // Initialize DP array with target calories
+    let dp = new Array(maxSessions + 1).fill(targetCalories);
+    // Track used exercises
+    let used = new Array(exercises.length).fill(false);
 
-    loadingStatus = "Finding your preferred exercise...";
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    loadingStatus = "Adding preferred exercise...";
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    // Find and add preferred exercise first
+    // Add preferred exercise first
     const preferredExercise = exercises.find(
       (ex) => ex.name === selectedWorkout
     );
@@ -63,47 +65,64 @@
         calories: preferredExercise.calories,
         intensity: preferredExercise.intensity,
       });
-      remainingCalories -= preferredExercise.calories;
-      remainingTime -= 30;
-      lastIntensity = preferredExercise.intensity;
-    }
 
-    loadingStatus = "Optimizing additional exercises using greedy algorithm...";
-    await new Promise((resolve) => setTimeout(resolve, 4000));
+      // Update DP array with first exercise
+      dp[1] = dp[0] - preferredExercise.calories;
+      used[exercises.indexOf(preferredExercise)] = true;
+      let lastIntensity = preferredExercise.intensity;
 
-    for (
-      let session = 2;
-      session <= maxSessions && remainingTime >= 30;
-      session++
-    ) {
-      let bestExercise = null;
-      let minRemainingCalories = remainingCalories;
+      loadingStatus =
+        "Calculating optimal workout schedule using Dynamic Programming...";
+      await new Promise((resolve) => setTimeout(resolve, 4000));
 
-      for (const exercise of exercises) {
-        if (exercise.intensity === "H" && lastIntensity === "H") continue;
-        if (remainingCalories >= exercise.calories) {
-          const newRemainingCalories = remainingCalories - exercise.calories;
-          if (newRemainingCalories < minRemainingCalories) {
-            bestExercise = exercise;
-            minRemainingCalories = newRemainingCalories;
+      // Calculate optimal workout schedule using DP
+      for (let session = 2; session <= maxSessions; session++) {
+        let minRemainingCalories = dp[session - 1];
+        let bestExercise = null;
+        let bestExerciseIndex = -1;
+
+        // Find the best exercise for current session
+        for (let i = 0; i < exercises.length; i++) {
+          const exercise = exercises[i];
+          // Skip if exercise is already used
+          if (used[i]) continue;
+          // Prevent consecutive high intensity exercises
+          if (exercise.intensity === "H" && lastIntensity === "H") continue;
+
+          // Check if exercise can be performed with remaining calories
+          if (dp[session - 1] >= exercise.calories) {
+            const remainingCalories = dp[session - 1] - exercise.calories;
+            if (
+              bestExercise === null ||
+              remainingCalories < minRemainingCalories
+            ) {
+              bestExercise = exercise;
+              bestExerciseIndex = i;
+              minRemainingCalories = remainingCalories;
+            }
           }
         }
+
+        if (!bestExercise) break;
+
+        schedule.push({
+          name: bestExercise.name,
+          calories: bestExercise.calories,
+          intensity: bestExercise.intensity,
+        });
+
+        // Update DP array and tracking variables
+        dp[session] = minRemainingCalories;
+        used[bestExerciseIndex] = true;
+        lastIntensity = bestExercise.intensity;
       }
 
-      if (!bestExercise) break;
-
-      schedule.push({
-        name: bestExercise.name,
-        calories: bestExercise.calories,
-        intensity: bestExercise.intensity,
-      });
-      remainingCalories = minRemainingCalories;
-      remainingTime -= 30;
-      lastIntensity = bestExercise.intensity;
+      // Calculate final results
+      remainingCalories = dp[schedule.length];
+      totalBurnedCalories = targetCalories - remainingCalories;
     }
 
     loadingStatus = "Schedule completed!";
-    totalBurnedCalories = targetCalories - remainingCalories;
   }
 </script>
 

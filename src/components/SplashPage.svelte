@@ -25,8 +25,8 @@
                 Your Path to Peak Performance
               </h1>
               <p class="text-gray-400">
-                Your fitness companion powered by greedy algorithms for
-                optimized, results-driven training
+                Your fitness companion powered by dynamic programming for
+                intelligent, personalized training
               </p>
             </div>
           </div>
