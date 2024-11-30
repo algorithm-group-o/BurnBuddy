@@ -1,4 +1,7 @@
 <script>
+  import Lottie from "lottie-web";
+  import { onMount } from "svelte";
+
   export let selectedWorkout;
   export let targetCalories;
   export let availableTime;
@@ -10,6 +13,23 @@
   let remainingCalories = 0;
   let loadingStatus = "";
   let loading = false;
+
+  let animationContainer;
+  let animation;
+
+  onMount(() => {
+    animation = Lottie.loadAnimation({
+      container: animationContainer,
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      path: "/BurnBuddy/src/assets/loading.json",
+    });
+
+    return () => {
+      if (animation) animation.destroy();
+    };
+  });
 
   $: if (selectedWorkout && targetCalories && availableTime) {
     loading = true;
@@ -88,13 +108,14 @@
 
 <section class="px-4 flex-1 flex flex-col h-[calc(100vh-86px)]">
   <div class="flex-1 overflow-y-auto">
-    <p class="font-bold text-xl mb-4">Your Workout Schedule</p>
-
     {#if loading}
-      <div class="flex items-center justify-center space-x-2">
-        <p class="text-gray-400 ml-2">{loadingStatus}</p>
+      <p class="font-bold text-xl mb-3">Calculating...</p>
+      <div class="flex flex-col items-center justify-center space-y-4">
+        <p class="text-gray-400 text-left w-full mb-6">{loadingStatus}</p>
+        <div bind:this={animationContainer} class="w-64 h-64 scale-150"></div>
       </div>
     {:else if schedule.length > 0}
+      <p class="font-bold text-xl mb-4">Your Workout Schedule</p>
       <div class="mb-6 p-3 bg-gray-800 rounded-lg border border-gray-700">
         <p class="font-bold text-lg mb-2">Workout Summary</p>
         <div class="space-y-2">

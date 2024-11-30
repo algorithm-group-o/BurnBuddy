@@ -1,11 +1,17 @@
 <script>
   export let step;
-  export let targetCalories = "";
+  export let targetCalories;
   export let selectedWorkout;
 
   import { exercises } from "../lib/exercises";
 
   let isValid = false;
+
+  $: {
+    if (targetCalories) {
+      validateInput(targetCalories);
+    }
+  }
 
   function validateInput(value) {
     const calories = parseInt(value);

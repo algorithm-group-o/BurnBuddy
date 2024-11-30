@@ -1,7 +1,13 @@
 <script>
   export let step;
-  export let availableTime = "";
+  export let availableTime;
   let isValid = false;
+
+  $: {
+    if (availableTime) {
+      validateInput(availableTime);
+    }
+  }
 
   function validateInput(value) {
     const minutes = parseInt(value);
