@@ -1,8 +1,14 @@
 <script>
+  import BurnBuddy from "../assets/burnbuddy.png";
 </script>
 
 <main class="container">
   <article class="content">
+    <nav>
+      <div class="p-3">
+        <img src={BurnBuddy} alt="BurnBuddy" class="h-7" />
+      </div>
+    </nav>
     <slot />
   </article>
 </main>
@@ -30,9 +36,9 @@
       0 1px 3px rgba(255, 255, 255, 0.01);
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 640px) {
     .container {
-      max-width: 768px;
+      max-width: 640px;
     }
   }
 </style>

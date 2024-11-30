@@ -1,12 +1,9 @@
 <script>
   import Background from "../components/background.svelte";
-  import BurnBuddy from "../assets/burnbuddy.png";
+  import WorkoutSelect from "../components/WorkoutSelect.svelte";
+  import { exercises } from "../lib/exercises";
 </script>
 
 <Background>
-  <section>
-    <div class="p-3">
-      <img src={BurnBuddy} alt="BurnBuddy" class="h-7" />
-    </div>
-  </section>
+  <WorkoutSelect />
 </Background>
