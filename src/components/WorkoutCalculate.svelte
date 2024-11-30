@@ -8,19 +8,31 @@
   let schedule = [];
   let totalBurnedCalories = 0;
   let remainingCalories = 0;
+  let loadingStatus = "";
+  let loading = false;
 
   $: if (selectedWorkout && targetCalories && availableTime) {
-    calculateSchedule();
+    loading = true;
+    calculateSchedule().finally(() => {
+      loading = false;
+    });
   }
 
-  function calculateSchedule() {
+  async function calculateSchedule() {
     schedule = [];
+    loading = true;
+    loadingStatus = "Calculating number of sessions...";
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
     const maxSessions = Math.floor(availableTime / 30);
     let remainingTime = availableTime;
     remainingCalories = targetCalories;
     let lastIntensity = null;
 
-    // 선호하는 운동으로 시작
+    loadingStatus = "Finding your preferred exercise...";
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    // Find and add preferred exercise first
     const preferredExercise = exercises.find(
       (ex) => ex.name === selectedWorkout
     );
@@ -35,7 +47,9 @@
       lastIntensity = preferredExercise.intensity;
     }
 
-    // 나머지 세션 계산
+    loadingStatus = "Optimizing additional exercises using greedy algorithm...";
+    await new Promise((resolve) => setTimeout(resolve, 4000));
+
     for (
       let session = 2;
       session <= maxSessions && remainingTime >= 30;
@@ -45,7 +59,6 @@
       let minRemainingCalories = remainingCalories;
 
       for (const exercise of exercises) {
-        // 이미 사용된 운동이나 연속된 고강도 운동 제외
         if (exercise.intensity === "H" && lastIntensity === "H") continue;
         if (remainingCalories >= exercise.calories) {
           const newRemainingCalories = remainingCalories - exercise.calories;
@@ -68,6 +81,7 @@
       lastIntensity = bestExercise.intensity;
     }
 
+    loadingStatus = "Schedule completed!";
     totalBurnedCalories = targetCalories - remainingCalories;
   }
 </script>
@@ -76,7 +90,11 @@
   <div class="flex-1 overflow-y-auto">
     <p class="font-bold text-xl mb-4">Your Workout Schedule</p>
 
-    {#if schedule.length > 0}
+    {#if loading}
+      <div class="flex items-center justify-center space-x-2">
+        <p class="text-gray-400 ml-2">{loadingStatus}</p>
+      </div>
+    {:else if schedule.length > 0}
       <div class="mb-6 p-3 bg-gray-800 rounded-lg border border-gray-700">
         <p class="font-bold text-lg mb-2">Workout Summary</p>
         <div class="space-y-2">
@@ -104,8 +122,6 @@
           </div>
         {/each}
       </div>
-    {:else}
-      <p class="text-gray-400">Calculating your workout schedule...</p>
     {/if}
   </div>
 </section>
