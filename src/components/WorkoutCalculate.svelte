@@ -7,6 +7,7 @@
   export let availableTime;
 
   import { exercises } from "../lib/exercises";
+  import { loadingAnimationData } from "../lib/loadingAnimationData";
 
   let schedule = [];
   let totalBurnedCalories = 0;
@@ -23,7 +24,7 @@
       renderer: "svg",
       loop: true,
       autoplay: true,
-      path: import.meta.env.BASE_URL + "assets/loading.json",
+      animationData: loadingAnimationData,
     });
 
     return () => {
