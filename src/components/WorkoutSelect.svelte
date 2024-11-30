@@ -91,7 +91,7 @@
         step = 2;
       }}
     >
-      Selection Complete
+      Continue
     </button>
   </div>
 </section>
