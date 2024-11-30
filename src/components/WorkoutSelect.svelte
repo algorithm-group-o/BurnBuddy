@@ -2,7 +2,7 @@
   import { exercises } from "../lib/exercises";
   import { onMount } from "svelte";
 
-  let selectedWorkout;
+  export let selectedWorkout;
   let scrollContainer;
   let showScrollIndicator = false;
   let hasScrolledToBottom = false;
