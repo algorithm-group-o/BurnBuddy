@@ -2,7 +2,7 @@
 
 BurnBuddy is an intelligent workout companion that leverages dynamic programming algorithms to create personalized fitness schedules. Built with Svelte and TailwindCSS, it offers a sleek, modern interface for achieving your fitness goals.
 
-![BurnBuddy Screenshot](/public/burnbuddy-readme-thumbnail.png)
+![BurnBuddy Screenshot](/src/assets//burnbuddy-readme-thumbnail.png)
 
 ## 🌐 **Try BurnBuddy Now!**
 
