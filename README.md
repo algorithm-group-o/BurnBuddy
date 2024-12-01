@@ -4,6 +4,10 @@ BurnBuddy is an intelligent workout companion that leverages dynamic programming
 
 ![BurnBuddy Screenshot](/public/burnbuddy-readme-thumbnail.png)
 
+## 🌐 **Try BurnBuddy Now!**
+
+<a href="https://algorithm-group-o.github.io/BurnBuddy/" target="_blank">👉 Click here to launch the Live Demo! 👈</a>
+
 
 
 ## 🚀 Features
