@@ -1,47 +1,87 @@
-# Svelte + Vite
+# BurnBuddy 🔥
 
-This template should help get you started developing with Svelte in Vite.
+BurnBuddy is an intelligent workout companion that leverages dynamic programming algorithms to create personalized fitness schedules. Built with Svelte and TailwindCSS, it offers a sleek, modern interface for achieving your fitness goals.
 
-## Recommended IDE Setup
+![BurnBuddy Screenshot](/public/burnbuddy-readme-thumbnail.png)
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
 
-## Need an official Svelte framework?
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+## 🚀 Features
 
-## Technical considerations
+- **Smart Workout Planning**: Utilizes dynamic programming to optimize workout schedules
+- **Personalized Goals**: Set custom calorie targets and time constraints
+- **Adaptive Scheduling**: Automatically adjusts workout intensity based on your preferences
+- **Real-time Validation**: Instant feedback on input parameters
+- **Mobile-First Design**: Fully responsive interface for seamless mobile experience
 
-**Why use this over SvelteKit?**
+## 🧮 Algorithm
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+BurnBuddy implements a dynamic programming approach to solve the classic knapsack problem, optimizing workout selections based on:
+- Available time (constraint)
+- Target calories (objective)
+- Exercise intensity levels
 
-This template contains as little as possible to get started with Vite + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+The algorithm ensures optimal workout combinations while respecting user constraints, making it both efficient and practical.
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+## 🛠️ Tech Stack
 
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
+- **Frontend**: Svelte
+- **Styling**: TailwindCSS
+- **Build Tool**: Vite
+- **Routing**: Svelte Routing
+- **Icons**: Font Awesome
 
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
+## 🏃 Getting Started
 
-**Why include `.vscode/extensions.json`?**
-
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
-
-**Why enable `checkJs` in the JS template?**
-
-It is likely that most cases of changing variable types in runtime are likely to be accidental, rather than deliberate. This provides advanced typechecking out of the box. Should you like to take advantage of the dynamically-typed nature of JavaScript, it is trivial to change the configuration.
-
-**Why is HMR not preserving my local component state?**
-
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/sveltejs/svelte-hmr/tree/master/packages/svelte-hmr#preservation-of-local-state).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```js
-// store.js
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
+1. Clone the repository
+```bash
+git clone https://github.com/algorithm-group-o/BurnBuddy.git
 ```
+
+2. Install dependencies
+```bash
+cd BurnBuddy
+npm install
+```
+
+3. Start development server
+```bash
+npm run dev
+```
+
+
+4. Build for production
+```bash
+npm run build
+```
+
+
+## 📱 Usage
+
+1. Select your preferred workout type
+2. Enter target calories (between exercise minimum and 2000)
+3. Specify available time (30-180 minutes)
+4. Get your personalized workout schedule
+
+## 🎯 Project Structure
+```
+BurnBuddy/
+├── src/
+│ ├── components/
+│ ├── routes/ 
+│ ├── lib/ 
+│ └── assets/ 
+├── public/ 
+└── ...config files
+```
+
+
+## 📄 License
+
+This project is licensed under the MIT License
+
+## 🙏 Acknowledgments
+
+- UI/UX design inspired by luckti.me's minimalist aesthetic
+- Logo generated using Adobe Firefly, referencing NewJeans' Bunny character
+- Algorithm implementation inspired by classic knapsack problem
