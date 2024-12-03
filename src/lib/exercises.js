@@ -1,14 +1,16 @@
 export const exercises = [
-  { name: "Bicycling", calories: 175, intensity: "M" },
-  { name: "Croquet", calories: 75, intensity: "L" },
-  { name: "Boxing", calories: 450, intensity: "H" },
-  { name: "Basketball", calories: 250, intensity: "H" },
-  { name: "Hockey", calories: 252, intensity: "H" },
-  { name: "Golf", calories: 120, intensity: "L" },
-  { name: "Jogging", calories: 200, intensity: "M" },
-  { name: "Football", calories: 270, intensity: "H" },
-  { name: "Soccer", calories: 285, intensity: "H" },
-  { name: "Swimming", calories: 320, intensity: "H" },
-  { name: "Walking", calories: 70, intensity: "L" },
-  { name: "Power Lifting", calories: 160, intensity: "M" }
+  { name: "Aerobic", calories: 211, intensity: "M" },
+  { name: "Badminton", calories: 296, intensity: "M" },
+  { name: "Basketball", calories: 280, intensity: "M" },
+  { name: "Bicycling", calories: 176, intensity: "L" },
+  { name: "Boxing", calories: 422, intensity: "H" },
+  { name: "Football", calories: 317, intensity: "H" },
+  { name: "Running", calories: 281, intensity: "M" },
+  { name: "Squash", calories: 422, intensity: "H" },
+  { name: "Walking", calories: 242, intensity: "M" },
+  { name: "Deadlift(155Ibs)", calories: 221, intensity: "M" },
+  { name: "Swimming(freestyle)", calories: 352, intensity: "H" },
+  { name: "Soccer", calories: 352, intensity: "H" },
+  { name: "Tennis", calories: 281, intensity: "M" },
+  { name: "Golf", calories: 190, intensity: "L" }
 ]; 

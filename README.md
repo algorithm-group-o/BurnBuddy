@@ -84,8 +84,15 @@ BurnBuddy/
 
 This project is licensed under the MIT License
 
+## 🔍 Data Sources
+
+Exercise calorie burn rates were sourced from:
+- General exercises: [Wisconsin Department of Health Services - Calories Burned Per Hour](https://www.dhs.wisconsin.gov/publications/p4/p40109.pdf)
+- Deadlift data: [FitnessVolt - Calories Burned Deadlifting](https://fitnessvolt.com/calories-burned-deadlifting/)
+
 ## 🙏 Acknowledgments
 
 - UI/UX design inspired by luckti.me's minimalist aesthetic
 - Logo generated using Adobe Firefly, referencing NewJeans' Bunny character
 - Algorithm implementation inspired by classic knapsack problem
+
