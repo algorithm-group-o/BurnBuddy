@@ -15,7 +15,6 @@ BurnBuddy is an intelligent workout companion that leverages dynamic programming
 - **Smart Workout Planning**: Utilizes dynamic programming to optimize workout schedules
 - **Personalized Goals**: Set custom calorie targets and time constraints
 - **Adaptive Scheduling**: Automatically adjusts workout intensity based on your preferences
-- **Real-time Validation**: Instant feedback on input parameters
 - **Mobile-First Design**: Fully responsive interface for seamless mobile experience
 
 ## 🧮 Algorithm
